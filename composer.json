@@ -1,0 +1,21 @@
+{
+    "name": "drola/php-wasm",
+    "type": "library",
+    "description": "WebAssembly runtime implementation in PHP",
+    "require-dev": {
+        "phpunit/phpunit": "^7.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matjaž Drolc",
+            "email": "mdrolc@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Drola\\WebAssembly\\": "src/Drola/WebAssembly/"
+        }
+    }
+}
