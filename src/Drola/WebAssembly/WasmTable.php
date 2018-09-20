@@ -23,8 +23,11 @@ class WasmTable
      */
     public function __construct(WasmTableDescriptor $tableDescriptor)
     {
-        if($tableDescriptor->getMaximum() !== null && $tableDescriptor->getMaximum() < $tableDescriptor->getInitial()) {
-            throw new \OutOfRangeException("Maximum number of elements cannot be smaller than initial number of elements");
+        if ($tableDescriptor->getMaximum() !== null
+            && $tableDescriptor->getMaximum() < $tableDescriptor->getInitial()) {
+            throw new \OutOfRangeException(
+                "Maximum number of elements cannot be smaller than initial number of elements"
+            );
         }
 
         $this->tableDescriptor = $tableDescriptor;
@@ -34,7 +37,8 @@ class WasmTable
     /**
      * @return int
      */
-    public function getLength() {
+    public function getLength()
+    {
         return count($this->table);
     }
 
@@ -44,8 +48,9 @@ class WasmTable
      * @param int $index The index of the function reference you want to retrieve.
      * @return funcref A function reference — this is an exported WebAssembly function.
      */
-    public function get(int $index) {
-        if($index >= count($this->table)) {
+    public function get(int $index)
+    {
+        if ($index >= count($this->table)) {
             throw new \OutOfRangeException("Index must be less than length");
         }
 
@@ -53,16 +58,20 @@ class WasmTable
     }
 
     /**
-     * The grow() method of the WebAssembly.Table object increases the size of the Table instance by a specified number of elements.
+     * The grow() method of the WebAssembly.Table object increases the size of the
+     * Table instance by a specified number of elements.
      *
      * @param $number int The number of elements you want to grow the table by.
      * @return int The previous length of the table.
      */
-    public function grow($number: int): int {
+    public function grow(int $number): int
+    {
         $originalLength = count($this->table);
         $newLength = $number + $originalLength;
-        if($newLength > $this->tableDescriptor->getMaximum()) {
-            throw new \RangeException("Cannot grow array beyond maximum number of elements.");
+        if ($newLength > $this->tableDescriptor->getMaximum()) {
+            throw new \RangeException(
+                "Cannot grow array beyond maximum number of elements."
+            );
         }
 
         $this->table = array_pad($this->table, $newLength, null);
@@ -71,17 +80,20 @@ class WasmTable
     }
 
     /**
-     * The set() method of the WebAssembly.Table object mutates a reference stored at a given index to a different value.
+     * The set() method of the WebAssembly.Table object mutates a reference stored
+     * at a given index to a different value.
      *
      * @param int $index The index of the function reference you want to mutate.
-     * @param $value funcref The value you want to mutate the reference to. This must be an exported WebAssembly function.
+     * @param $value funcref The value you want to mutate the reference to.
+     *  This must be an exported WebAssembly function.
      */
-    public function set(int $index, $value) {
-        if($index >= count($this->table)) {
+    public function set(int $index, $value)
+    {
+        if ($index >= count($this->table)) {
             throw new \OutOfRangeException("Index must be less than length");
         }
 
-        if($value === null) {
+        if ($value === null) {
             throw new \TypeError('$value should be an exported WebAssembly function.');
         }
     }

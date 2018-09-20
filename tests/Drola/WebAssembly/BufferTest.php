@@ -26,22 +26,19 @@ class BufferTest extends TestCase
         try {
             $buffer['badOffset'] = '1';
             $this->fail('Should have thrown an exception');
-        } catch(\OutOfRangeException $e) {
-
+        } catch (\OutOfRangeException $e) {
         }
 
         try {
             $buffer[0] = '123';
             $this->fail('Should have thrown an exception');
-        } catch(\OutOfRangeException $e) {
-
+        } catch (\OutOfRangeException $e) {
         }
 
         try {
             $buffer[0] = 1;
             $this->fail('Should have thrown an exception');
-        } catch(\OutOfRangeException $e) {
-
+        } catch (\OutOfRangeException $e) {
         }
     }
 
@@ -81,7 +78,6 @@ class BufferTest extends TestCase
             $v = $buffer[10];
             $this->fail('Should have thrown an exception');
         } catch (\OutOfRangeException $e) {
-
         }
     }
 }

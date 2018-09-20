@@ -2,7 +2,6 @@
 
 namespace Drola\WebAssembly\Lexer;
 
-
 class WasmLexer
 {
     /**

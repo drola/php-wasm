@@ -2,7 +2,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class WasmModule
 {
     /**
@@ -54,6 +53,4 @@ class WasmModule
     {
         return $this->imports;
     }
-
-
 }

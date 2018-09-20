@@ -3,7 +3,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class BufferSlice extends Buffer implements IBuffer
 {
     /**

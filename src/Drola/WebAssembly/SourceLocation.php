@@ -3,7 +3,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class SourceLocation
 {
     /**

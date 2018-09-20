@@ -30,7 +30,8 @@ class WasmMemory
      */
     public function __construct(WasmMemoryDescriptor $memoryDescriptor)
     {
-        if ($memoryDescriptor->getMaximum() !== null && $memoryDescriptor->getMaximum() < $memoryDescriptor->getInitial()) {
+        if ($memoryDescriptor->getMaximum() !== null
+            && $memoryDescriptor->getMaximum() < $memoryDescriptor->getInitial()) {
             throw new \OutOfRangeException("Maximum memory size cannot be smaller than initial memory size");
         }
 

@@ -3,7 +3,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class Buffer implements IBuffer
 {
     /**
@@ -92,7 +91,7 @@ class Buffer implements IBuffer
      */
     public function offsetSet($offset, $value)
     {
-        if ($this->offsetExists($offset) && is_string($value) && strlen($value) === 1) {
+        if (is_int($offset) && $this->offsetExists($offset) && is_string($value) && strlen($value) === 1) {
             $this->buffer[$offset] = $value;
         } else {
             throw new \OutOfRangeException();

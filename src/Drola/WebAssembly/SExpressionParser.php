@@ -3,7 +3,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class SExpressionParser
 {
     /**
@@ -20,7 +19,8 @@ class SExpressionParser
         $this->buffer = $buffer;
     }
 
-    public function parse() {
+    public function parse()
+    {
         /**
          * @var $stack \SplStack<SExpressionElement>
          */
@@ -33,11 +33,10 @@ class SExpressionParser
 
         $currentElement = null;
 
-        while(true) {
+        while (true) {
             $this->skipWhitespace();
             //if($this->)
         }
-
     }
 
     private function skipWhitespace()

@@ -25,7 +25,8 @@ class WasmGlobal
     /**
      * WasmGlobal constructor.
      * @param WasmGlobalDescriptor $globalDescriptor
-     * @param mixed $value The value the variable contains. This can be any value, as long as its type matches the variable's data type.
+     * @param mixed $value The value the variable contains. This can be any value,
+     * as long as its type matches the variable's data type.
      */
     public function __construct(WasmGlobalDescriptor $globalDescriptor, $value)
     {

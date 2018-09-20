@@ -12,7 +12,10 @@
             "email": "mdrolc@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "phan/phan": "^1.0",
+        "squizlabs/php_codesniffer": "^3.3"
+    },
     "autoload": {
         "psr-4": {
             "Drola\\WebAssembly\\": "src/Drola/WebAssembly/"

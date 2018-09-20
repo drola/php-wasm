@@ -2,7 +2,6 @@
 
 namespace Drola\WebAssembly\Lexer;
 
-
 class WastLexer
 {
     /**
@@ -11,6 +10,5 @@ class WastLexer
      */
     public static function lex($inputStream): array
     {
-
     }
 }

@@ -3,7 +3,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class SExpressionElement
 {
     /**
@@ -45,8 +44,14 @@ class SExpressionElement
      * @param bool $isList
      * @param null $elements
      */
-    public function __construct(bool $isString, bool $isQuoted, bool $isDollar, string $value, bool $isList, $elements = null)
-    {
+    public function __construct(
+        bool $isString,
+        bool $isQuoted,
+        bool $isDollar,
+        string $value,
+        bool $isList,
+        $elements = null
+    ) {
         $this->isString = $isString;
         $this->isQuoted = $isQuoted;
         $this->isDollar = $isDollar;

@@ -2,7 +2,6 @@
 
 namespace Drola\WebAssembly;
 
-
 class WasmGlobalDescriptor
 {
     /**
@@ -18,7 +17,8 @@ class WasmGlobalDescriptor
 
     /**
      * WasmGlobalDescriptor constructor.
-     * @param string $value A string representing the data type of the global. This can be one of i32, i64, f32, and f64.
+     * @param string $value A string representing the data type of the global.
+     *  This can be one of i32, i64, f32, and f64.
      * @param bool $mutable Whether the global is mutable or not.
      */
     public function __construct(string $value, bool $mutable = false)

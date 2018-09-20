@@ -2,11 +2,11 @@
 
 namespace Drola\WebAssembly;
 
-
 class WasmTableDescriptor
 {
     /**
-     * A string representing the type of value to be stored in the table. At the moment this can only have a value of "anyfunc" (functions).
+     * A string representing the type of value to be stored in the table.
+     * At the moment this can only have a value of "anyfunc" (functions).
      *
      * @var string
      */
