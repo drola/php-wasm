@@ -8,56 +8,57 @@ class SExpressionElement
     /**
      * @var bool
      */
-    private $isString;
+    private $isString = null;
 
     /**
      * @var bool
      */
-    private $isQuoted;
+    private $isQuoted = null;
 
     /**
      * @var bool
      */
-    private $isDollar;
+    private $isDollar = null;
 
     /**
      * @var string
      */
-    private $value;
+    private $value = null;
 
     /**
      * @var bool
      */
-    private $isList;
+    private $isList = null;
 
     /**
      * @var null
      */
-    private $elements;
+    private $elements = null;
+
+    /**
+     * @var null|int
+     */
+    private $line = null;
+
+    /**
+     * @var null|int
+     */
+    private $column = null;
+
+    /**
+     * @var null|SourceLocation
+     */
+    private $sourceLocation = null;
+
+    /**
+     * @var null|SourceLocation
+     */
+    private $endSourceLocation = null;
 
     /**
      * SExpressionElement constructor.
-     * @param bool $isString
-     * @param bool $isQuoted
-     * @param bool $isDollar
-     * @param string $value
-     * @param bool $isList
-     * @param null $elements
      */
-    public function __construct(
-        bool $isString,
-        bool $isQuoted,
-        bool $isDollar,
-        string $value,
-        bool $isList,
-        $elements = null
-    ) {
-        $this->isString = $isString;
-        $this->isQuoted = $isQuoted;
-        $this->isDollar = $isDollar;
-        $this->value = $value;
-        $this->isList = $isList;
-        $this->elements = $elements;
+    public function __construct() {
     }
 
     /**
@@ -106,5 +107,80 @@ class SExpressionElement
     public function getElements()
     {
         return $this->elements;
+    }
+
+    /**
+     * @param int $line
+     * @param int $column
+     * @param SourceLocation $sourceLocation
+     */
+    public function setMetadata(int $line, int $column, SourceLocation $sourceLocation)
+    {
+        $this->line = $line;
+        $this->column = $column;
+        $this->sourceLocation = $sourceLocation;
+    }
+
+    /**
+     * @param string $str
+     * @param bool $isDollar
+     * @param bool $isQuoted
+     */
+    public function setString(string $str, bool $isDollar, bool $isQuoted)
+    {
+        $this->isList = false;
+        $this->value = $str;
+        $this->isDollar = $isDollar;
+        $this->isQuoted = $isQuoted;
+    }
+
+    /**
+     * @param SourceLocation $sourceLocation
+     */
+    public function setEndLocation(SourceLocation $sourceLocation) {
+        $this->endSourceLocation = $sourceLocation;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLine(): ?int
+    {
+        return $this->line;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getColumn(): ?int
+    {
+        return $this->column;
+    }
+
+    /**
+     * @return SourceLocation|null
+     */
+    public function getSourceLocation(): ?SourceLocation
+    {
+        return $this->sourceLocation;
+    }
+
+    /**
+     * @return SourceLocation|null
+     */
+    public function getEndSourceLocation(): ?SourceLocation
+    {
+        return $this->endSourceLocation;
+    }
+
+    /**
+     * @param SExpressionElement $element
+     * @throws ParseException
+     */
+    public function appendToList(SExpressionElement $element) {
+        if(!$this->isList) {
+            throw new ParseException('expected list', $this->line, $this->column);
+        }
+        $this->elements[] = $element;
     }
 }

@@ -117,4 +117,13 @@ class BufferSlice extends Buffer implements IBuffer
     {
         throw new \BadMethodCallException();
     }
+
+    /**
+     * @return int
+     */
+    public function getOffset(): int
+    {
+        return $this->offset;
+    }
+
 }

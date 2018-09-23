@@ -110,4 +110,12 @@ class Buffer implements IBuffer
     {
         throw new \BadMethodCallException();
     }
+
+    /**
+     * @return int
+     */
+    public function getOffset(): int
+    {
+        return 0;
+    }
 }

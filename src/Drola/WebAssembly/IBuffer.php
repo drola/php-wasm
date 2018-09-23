@@ -21,4 +21,9 @@ interface IBuffer extends \ArrayAccess
      * @return IBuffer
      */
     public function offset(int $offset): IBuffer;
+
+    /**
+     * @return int
+     */
+    public function getOffset(): int;
 }
